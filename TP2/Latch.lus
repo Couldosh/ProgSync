@@ -1,0 +1,4 @@
+node Latch(on,off:bool) returns(output:bool);
+let
+	output = if on then true else if off then false else false -> pre(output);
+tel

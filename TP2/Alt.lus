@@ -1,0 +1,4 @@
+node Alt(reset:bool) returns(output:bool);
+let
+	output = false -> not pre(output);
+tel

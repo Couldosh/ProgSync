@@ -1,0 +1,7 @@
+node Moyenne(a:int) returns(moyenne:int);
+var min,max:int;
+let
+	min = a -> if a<pre(min) then a else  pre(min);
+	max = a -> if a>pre(max) then a else  pre(max);
+	moyenne = (min + max) /2;
+tel

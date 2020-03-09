@@ -1,0 +1,4 @@
+node Fibonacci(reset:bool) returns(result:int);
+let
+	result = 0 -> if pre(result) = 0 then 1 else if reset then 1 else pre(result) + pre(pre(result));
+tel
