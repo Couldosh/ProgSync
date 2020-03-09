@@ -1,0 +1,5 @@
+node FullAdder(a, b, c:bool) returns(sum, carry:bool);
+let
+	sum = a xor b xor c;
+	carry = a and b or a and c or b and c;
+tel

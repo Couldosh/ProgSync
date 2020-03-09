@@ -1,0 +1,14 @@
+node FullAdder(a,  c:bool) returns(sum, carry:bool);
+let
+	sum = a xor c;
+	carry = a and c;
+tel
+
+node Inc16(x:bool^16) returns(out:bool^16;carry:bool);
+	var carrys:bool^16;
+let
+	(out[15],carrys[15]) = FullAdder(x[15],true);
+	(out[14..0],carrys[14..0]) = FullAdder(x[14..0],carrys[15..1]);
+	carry = carrys[0];
+tel
+

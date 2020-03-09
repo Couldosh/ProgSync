@@ -1,0 +1,13 @@
+node HalfAdder(a,b:bool) returns(sum, carry:bool);
+let
+	sum = a xor b;
+	carry = a and b;
+tel
+
+node FullAdder2(a, b, c:bool) returns(sum, carry:bool);
+var sum1,carry1,carry2:bool;
+let
+	(sum1,carry1) = HalfAdder(a,b);
+	(sum,carry2) = HalfAdder(sum1,c);
+	carry = carry1 or carry2;
+tel

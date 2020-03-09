@@ -1,0 +1,18 @@
+node FullAdder(a, b, c:bool) returns(sum, carry:bool);
+let
+	sum = a xor b xor c;
+	carry = a and b or a and c or b and c;
+tel
+
+node Add_n(const n:int; x, y:bool^n; c:bool) returns(out:bool^n;carry:bool);
+	var carrys:bool^n;
+let
+	(out[n-1],carrys[n-1]) = FullAdder(x[n-1],y[n-1],c);
+	(out[n-2..0],carrys[n-2..0]) = FullAdder(x[n-2..0],y[n-2..0],carrys[n-1..1]);
+	carry = carrys[0];
+tel
+
+node MainAdd_n(x, y:bool^32; c:bool) returns(out:bool^32;carry:bool);
+let
+	(out,carry) = Add_n(32,x,y,c);
+tel
