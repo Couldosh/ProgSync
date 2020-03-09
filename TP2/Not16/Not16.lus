@@ -1,0 +1,9 @@
+node Not(in:bool) returns(out:bool);
+let
+	out = not in;
+tel
+
+node Not16(in:bool^16) returns(out:bool^16);
+let
+	out[0..15] = Not(in[0..15]);
+tel

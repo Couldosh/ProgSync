@@ -1,0 +1,4 @@
+node Mux_16(a,b:bool^16;set:bool) returns(out:bool^16);
+let
+	out[0..15] = if set then a[0..15] else b[0..15];
+tel

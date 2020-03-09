@@ -1,0 +1,11 @@
+node Or_n_way_log(const n: int; in: bool^n) returns (out: bool);
+let
+	out = with n=1 then in[0]
+		else Or_n_way_log(n div 2, in[0..(n div 2 -1)]) or
+		Or_n_way_log((n+1)div 2, in[n div 2 .. n-1]);
+tel
+
+node Or_8_way(in: bool^8) returns (out: bool);
+let
+	out = Or_n_way_log(8,in);
+tel

@@ -1,0 +1,9 @@
+node MuxN(const N:int;a,b:bool^N;set:bool) returns(out:bool^N);
+let
+	out[0..N-1] = if set then a[0..N-1] else b[0..N-1];
+tel
+
+node MainMuxN(a,b:bool^2;set:bool) returns(out:bool^2);
+let
+	out = MuxN(2,a,b,set);
+tel

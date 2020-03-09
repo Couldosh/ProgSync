@@ -1,0 +1,9 @@
+node Or_n_way(const n:int;in:bool^n) returns(out:bool);
+let
+	out = if n=1 then in[0] else in[0] or Or_n_way(n-1,in[1..n-1]);
+tel
+
+node Or_n_wayMain(in:bool^4) returns(out:bool);
+let
+	out = Or_n_way(4,in);
+tel

@@ -1,0 +1,32 @@
+node Not(in:bool) returns(out:bool);
+let
+	out = not in;
+tel
+
+node And(a,b:bool) returns (out:bool);
+let
+	out = a and b;
+tel
+
+node Nand(a,b:bool) returns(out:bool);
+let
+	out = Not(And(a,b));
+tel
+
+node Or(a,b:bool) returns(out:bool);
+let
+	out = a or b;
+tel
+
+node Xor(a,b:bool) returns(out:bool);
+let
+	out = And(Or(a,b),Not(And(a,b)));
+tel
+
+node Logic16(a,b:bool^16) returns(And,Nand,Or,Xor:bool^16);
+let
+	And[0..15] = And(a[0..15],b[0..15]);
+	Nand[0..15] = Nand(a[0..15],b[0..15]);
+	Or[0..15] = Or(a[0..15],b[0..15]);
+	Xor[0..15] = Xor(a[0..15],b[0..15]);
+tel
