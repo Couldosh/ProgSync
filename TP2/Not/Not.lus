@@ -1,0 +1,4 @@
+node Not(in:bool) returns(out:bool);
+let
+	out = not in;
+tel

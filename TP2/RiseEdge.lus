@@ -1,0 +1,4 @@
+node RiseEdge(x:bool) returns(s:bool);
+let
+	s = false -> if x and not pre(x) then true else false;
+tel

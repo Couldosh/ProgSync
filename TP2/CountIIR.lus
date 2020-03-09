@@ -1,0 +1,4 @@
+node CountIIR(init,incr:int;reset:bool) returns(x:int);
+let
+	x = init -> if reset then init else pre(x)+incr;
+tel

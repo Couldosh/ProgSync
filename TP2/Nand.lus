@@ -1,0 +1,4 @@
+node Nand(a,b:bool) returns (c:bool);
+let
+	c = not (a and b);
+tel

@@ -1,0 +1,4 @@
+node CountR(reset:bool) returns (x:int);
+let
+	x = 0 -> if reset then 0 else pre(x)+1;
+tel
