@@ -1,0 +1,5 @@
+node Dmux(in,sel:bool) returns(a,b:bool);
+let
+	a = if not sel then in else false;
+	b = if sel then in else false;
+tel
