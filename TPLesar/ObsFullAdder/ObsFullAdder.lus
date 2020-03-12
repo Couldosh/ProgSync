@@ -1,0 +1,14 @@
+node ObsFullAdder(a,b,Cin:bool) returns (out:bool);
+let
+	out = (FullAdderA(a,b,Cin) = FullAdderB(a,b,Cin));
+tel
+
+node FullAdderA(a,b,Cin:bool) returns (out:bool);
+let
+	out = (a and b) or (a xor b) and Cin;
+tel
+
+node FullAdderB(a,b,Cin:bool) returns (out:bool);
+let
+	out = a and b or a and Cin or b and Cin;
+tel
