@@ -1,0 +1,6 @@
+node Alt(a,b:bool) returns(err:bool);
+var turnA:bool;
+let
+	turnA = a -> if a and not pre(turnA) then true else if b and pre(turnA) then false else pre(turnA);
+	err = false -> if not(a) and not(b) then pre(err) else (pre(turnA) and a) or (not pre(turnA) and b);
+tel

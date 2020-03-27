@@ -1,0 +1,7 @@
+node AltInit(a,b:bool) returns(err:bool);
+var turnA,init:bool;
+let
+	init = true -> (pre(init) and not a and not b);
+	turnA = false -> (pre(init) and b) or (pre(turnA) and a) or (not pre(turnA)and b); 
+	err = false -> if not(a) and not(b) then pre(err) else not init and ((turnA and a)or (not turnA and b));
+tel
