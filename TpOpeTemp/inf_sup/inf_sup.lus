@@ -1,0 +1,7 @@
+node inf_sup(a,b:bool) returns(inf,sup:bool);
+var count:int;
+let
+	count = (if a and b then 2 else if not a and not b then 0 else 1) -> if a and b then pre(count)+2 else if not a and not b then pre(count) else pre(count)+1;
+	inf = if a and b then true else if not a and not b then false else if count%2 = 1 then true else false;
+	sup = if a and b then true else if not a and not b then false else if count%2 = 0 then true else false;
+tel

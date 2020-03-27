@@ -1,0 +1,32 @@
+node sync(a,b:bool) returns(isSync:bool);
+let
+	isSync = a=b -> if a = not b then false else pre(isSync);
+tel
+
+node SubClock(a,b:bool) returns(isSubClock:bool);
+let
+	isSubClock = not(b and not a) -> if b and not a then false else pre(isSubClock) ;
+tel
+
+node SyncSubClock(a,b:bool) returns (isSync:bool);
+let
+	isSync = SubClock(a,b) and SubClock(b,a);
+tel
+
+node faster(a,b:bool) returns (aFaster:bool);
+var countA,countB:int;
+let
+	countA = (if a then 1 else 0) -> if a then pre(countA)+1 else pre(countA);
+	countB = (if b then 1 else 0) -> if b then pre(countB)+1 else pre(countB);
+	aFaster = countA>=countB;
+tel
+
+node SyncFaster(a,b:bool) returns (isSync:bool);
+let
+	isSync = faster(a,b) and faster(b,a);
+tel
+
+node obsSync(a,b:bool) returns(isEqual:bool);
+let
+	isEqual = SyncSubClock(a,b) = sync(a,b) and sync(a,b) = SyncFaster(a,b);
+tel

@@ -1,0 +1,11 @@
+node delai(c:bool;const d:int) returns(out:bool);
+var count:int;
+let
+	count = 0 -> if (pre(count) = d or not c) then pre(count) else pre(count)+1;
+	out = if count = d then c else false;
+tel
+
+node main(c:bool) returns(out:bool);
+let
+	out = delai(c,2);
+tel

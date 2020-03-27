@@ -1,0 +1,9 @@
+node SubClock(a,b:bool) returns(isSubClock:bool);
+let
+	isSubClock = not(b and not a) -> if b and not a then false else pre(isSubClock) ;
+tel
+
+node sync(a,b:bool) returns (isSync:bool);
+let
+	isSync = SubClock(a,b) and SubClock(b,a);
+tel

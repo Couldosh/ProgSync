@@ -1,0 +1,17 @@
+node intersection(a,b:bool) returns(c:bool);
+let
+	c = a and b;
+tel
+
+node SubClock(a,b:bool) returns(isSubClock:bool);
+let
+	isSubClock = not(b and not a) -> if b and not a then false else pre(isSubClock) ;
+tel
+
+
+node obsIntersection(a,b:bool) returns(out:bool);
+var intersectionOfAandB:bool;
+let
+	intersectionOfAandB = intersection(a,b);
+	out = SubClock(a,intersectionOfAandB) and SubClock(b,intersectionOfAandB);
+tel

@@ -1,0 +1,11 @@
+node periodic(c:bool;n:int) returns(clock:bool);
+var counter:int;
+let
+	counter = (if c then n else 1) -> if pre(counter) >= n then 1 else if c then pre(counter)+1 else pre(counter);
+	clock = if counter >= n then true else false;
+tel
+
+node ObsPeriodic(c:bool;n,m:int) returns(out:bool);
+let
+	out = periodic(periodic(c, n), m) = periodic(c, n*m);
+tel

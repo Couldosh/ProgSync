@@ -1,0 +1,17 @@
+node union(a,b:bool) returns(c:bool);
+let
+	c = a or b;
+tel
+
+node SubClock(a,b:bool) returns(isSubClock:bool);
+let
+	isSubClock = not(b and not a) -> if b and not a then false else pre(isSubClock) ;
+tel
+
+
+node obsUnion(a,b:bool) returns(out:bool);
+var unionOfAandB:bool;
+let
+	unionOfAandB = union(a,b);
+	out = SubClock(unionOfAandB,a) and SubClock(unionOfAandB,b);
+tel
